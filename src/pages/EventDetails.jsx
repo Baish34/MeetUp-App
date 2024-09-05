@@ -9,7 +9,7 @@ const EventDetails = () => {
 
   useEffect(() => {
     fetch(
-      `https://909e5e78-dc7d-41db-8b2e-be6121a8e4d7-00-uzqr87n90omq.riker.replit.dev/events/id/${id}`,
+      `meet-up-app-backend-p5xxtvs56.vercel.app/events/id/${id}`,
     )
       .then((res) => res.json())
       .then((data) => {
