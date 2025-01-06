@@ -9,7 +9,7 @@ const EventDetails = () => {
 
   useEffect(() => {
     fetch(
-      `meet-up-app-backend-p5xxtvs56.vercel.app/events/id/${id}`,
+      `https://meet-up-app-backend.vercel.app/events/id/${id}`,
     )
       .then((res) => res.json())
       .then((data) => {

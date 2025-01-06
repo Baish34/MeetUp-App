@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import EventListings from "../pages/EventListings";
 
-const MainSection = () => {
+const MainSection = ({ searchQuery }) => {
+  const [sortBy, setSortBy] = useState("");  
+
+  const handleSortChange = (type) => {
+    setSortBy(type);
+  };
+
   return (
     <main className="py-3">
       <div className="container">
@@ -19,19 +25,27 @@ const MainSection = () => {
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <li>
-                <a className="dropdown-item" href="#">
+                <a
+                  className="dropdown-item"
+                  href="#"
+                  onClick={() => handleSortChange("Online")}
+                >
                   Online
                 </a>
               </li>
               <li>
-                <a className="dropdown-item" href="#">
+                <a
+                  className="dropdown-item"
+                  href="#"
+                  onClick={() => handleSortChange("Offline")}
+                >
                   Offline
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <EventListings />
+        <EventListings searchQuery={searchQuery} sortBy={sortBy} />  {/* Pass sortBy to EventListings */}
       </div>
     </main>
   );

@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Header = () => {
+const Header = ({ onSearch }) => {
+  const [query, setQuery] = useState("");
+
+  const handleSearchChange = (e) => {
+    setQuery(e.target.value);
+    onSearch(e.target.value);
+  };
+
   return (
     <header className="bg-light">
       <div className="container">
@@ -19,12 +26,14 @@ const Header = () => {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-              <form className="d-flex ms-auto">
+              <form className="d-flex ms-auto" onSubmit={(e) => e.preventDefault()}>
                 <input
                   className="form-control me-2"
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search events..."
                   aria-label="Search"
+                  value={query}
+                  onChange={handleSearchChange}
                 />
                 <button className="btn btn-outline-primary" type="submit">
                   Search
